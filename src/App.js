@@ -5,6 +5,7 @@ import Register from './containers/Register'
 import Dashboard from './containers/Dashboard'
 import Welcome from './containers/Welcome'
 import Home from './containers/Home'
+import OtpGenerate from './containers/OtpGenerate';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           <Route path="/register" component={Register} />
           <Route path="/welcome" component={Welcome} />
           <Route path="/home" component={Home} />
+          <Route path="/otpGenerate" component={OtpGenerate} />
       </Switch>
   </Router>
   );

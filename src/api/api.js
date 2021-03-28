@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 export async function fetchHome(token) {
-    axios.get('http://localhost:8110/home', {
+    axios.get('http://localhost:8040/home', {
             headers : {
                 'Content-Type': 'application/json',
                 'Authorization': token,
