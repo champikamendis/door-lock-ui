@@ -11,6 +11,7 @@ export default class Login extends Component {
         this.state = {
           email: '',
           password: '',
+          loginSuccessful:false
         };
         this.onChange = this.onChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,9 +20,13 @@ export default class Login extends Component {
     onChange = (e) => this.setState({ [e.target.name]: e.target.value });
     
 
-    handleSubmit(event) {
+    async handleSubmit(event) {
         event.preventDefault()
-        login(this.state.email, this.state.password)  
+        let successful = await login(this.state.email, this.state.password)
+        console.log(successful)
+        if (successful){
+            this.setState({loginSuccessful: true})
+        }
     }
 
     handleForgetPassword() {
@@ -30,6 +35,7 @@ export default class Login extends Component {
 
     render() {
         return (
+            !this.state.loginSuccessful?
             <div>
                 <NavigationBar title="Enter Credentials to Enter the Home" marginLeft="88%"></NavigationBar>
                 <Container style={{ marginTop: '100px' }}>
@@ -50,7 +56,7 @@ export default class Login extends Component {
                         
                     </Form>
                 </Container>
-            </div>
+            </div> : <Redirect to="/otpGenerate" />
         )
     }
 }
